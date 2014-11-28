@@ -7,7 +7,7 @@ In order to do scripting in [ElasticSearch](https://github.com/elasticsearch/ela
 
 One of the languages supported is Groovy. Groovy is very similar to Java. 
 
-`GroovyOneliner` was extracted from one of the production apps at [HouseTrip](http://housetrip.com), since it allows to have a separate file for the Groovy script from which you can benefit: syntax highlighting, multilines, comments etc... and finally convert that script into one line script that is injected in ElasticSearch query. Nevertheless is important to say this gem is currently being used in production.
+`GroovyOneliner` was extracted from one of the production apps at [HouseTrip](http://housetrip.com), since it allows to have a separate file for the Groovy script, which benefits: syntax highlighting, multilines, comments etc... and convert that script into one liner that you can use for queries. Nevertheless is important to say this is being used in production.
 
 It is simple as it is, i.e, there are no external dependencies and while it's a very small task, it should allow to avoid repeating the same parsing code over and over.
 
