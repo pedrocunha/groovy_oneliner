@@ -9,11 +9,12 @@ class GroovyOneliner
 
     def compute
       @content
-           .gsub(/\/\/.*$/, '') # remove all comments //
-           .gsub("\n", '')      # remove all line-breaks
-           .gsub("\"", "'")     # substitute all double-quote to single-quote
-           .gsub(/^$/, '')      # remove all empty lines
-           .gsub(/;\s*/, ';')   # remove all whitespace after ;
+           .gsub(/\/\/.*$/, '')      # remove all comments //
+           .gsub("\n", '')           # remove all line-breaks
+           .gsub("\"", "'")          # substitute all double-quote to single-quote
+           .gsub(/^$/, '')           # remove all empty lines
+           .gsub(/;\s*/, ';')        # remove all whitespace after ;
+           .gsub(%r{/\*.*\*\/}, '')  # remove all comments /* ... */
     end
   end
 end

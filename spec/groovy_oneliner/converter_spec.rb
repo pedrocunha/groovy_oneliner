@@ -50,5 +50,16 @@ a = 4; b = 5;
       expect(subject.compute).to eql("a = 4;b = 5;")
     end
 
+    it 'removes all /* comment */ blocks' do
+      subject = described_class.new <<-TEXT
+/*
+ * This is a comment and will be ignored
+ */
+return 1;
+      TEXT
+
+      expect(subject.compute).to eql("return 1;")
+    end
+
   end
 end
