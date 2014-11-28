@@ -2,7 +2,7 @@
 
 Convert any groovy script file to a single line script. It is recommended (and also in order for this gem to work) that all lines must be terminated with `;`.
 
-### Why do you (we) need this ?
+### What would this help with ?
 In order to do scripting in [ElasticSearch](https://github.com/elasticsearch/elasticsearch) you can pick an handful of languages to inject code in your queries however ElasticSearch requires you that any script is written as a single line of code (not to mention the obvious properly formatted with `;`) at query time. 
 
 One of the languages supported is Groovy. Groovy is very similar to Java. 
