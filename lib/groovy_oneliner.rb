@@ -10,20 +10,23 @@ class GroovyOneliner
     @cache = GroovyOneliner::Cache.new
   end
 
-  def compute(file: file, options: {})
-    if options[:cache]
-      cached_content = @cache[file]
+  def compute(options = {})
+    path         = options.fetch(:path)
+    should_cache = options.fetch(:cache, false)
+
+    if should_cache
+      cached_content = @cache[path]
       return cached_content if cached_content
     end
 
-    content = File.read(file)
+    content = File.read(path)
     output  = GroovyOneliner::Converter.new(content).compute
 
-    options[:cache] ? @cache[file] = output : output
+    should_cache ? @cache[path] = output : output
   end
 
-  def self.compute(file: path, options:)
-    self.instance.compute(file: file, options: options)
+  def self.compute(options = {})
+    self.instance.compute(options)
   end
 
 end
