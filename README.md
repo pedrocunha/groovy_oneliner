@@ -3,6 +3,8 @@
 This gem allows you to convert a groovy script file to a single line script. Currently it is being used in a production environment to
 convert sane commented and formatted scripts to oneline scripts which will be injected in Elastic Search queries.
 
+Some file examples and the corresponding output when using this gem
+
 ### Example 1
 
 ```groovy
@@ -19,6 +21,7 @@ return 1;
 
 ```groovy
 a = 3;
+
 return a + 5;
 ```
 
