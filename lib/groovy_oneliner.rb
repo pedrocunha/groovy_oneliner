@@ -12,7 +12,7 @@ class GroovyOneliner
 
   def compute(options = {})
     path         = options.fetch(:path)
-    should_cache = options.fetch(:cache, false)
+    should_cache = options.fetch(:cache, false) || self.class.always_cache
 
     if should_cache
       cached_content = @cache[path]
@@ -27,6 +27,16 @@ class GroovyOneliner
 
   def self.compute(options = {})
     self.instance.compute(options)
+  end
+
+  @@always_cache = false
+
+  def self.always_cache=(value)
+    @@always_cache = value
+  end
+
+  def self.always_cache
+    @@always_cache
   end
 
 end

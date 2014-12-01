@@ -11,6 +11,7 @@ RSpec.describe GroovyOneliner do
     let(:path)    { 'path/to/file' }
     let(:options) { { path: path } }
 
+    before  { Singleton.__init__(GroovyOneliner) }
     subject { described_class }
 
     it 'allows to compute a file' do
@@ -34,6 +35,18 @@ RSpec.describe GroovyOneliner do
         subject.compute(options)
         subject.compute(options)
       end
+    end
+
+    context 'when caching is on through the class variable' do
+      before { described_class.always_cache = true }
+
+      it 'reads the file only once' do
+        expect(File).to receive(:read).once.with(path).and_return("foo = 1;")
+        subject.compute(options)
+        subject.compute(options)
+      end
+
+      after  { described_class.always_cache = false }
     end
 
   end
