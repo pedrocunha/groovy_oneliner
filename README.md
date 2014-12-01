@@ -35,7 +35,7 @@ b = 2;
 
 Converts to
 ```groovy
-a = 1; b = 2;
+a = 1;b = 2;
 ```
 
 ## Installation
@@ -57,13 +57,19 @@ Or install it yourself as:
 ## Usage
 
 ```
-GroovyOneliner.compute(file: 'path/to/file')
+GroovyOneliner.compute(path: 'path/to/file')
 ```
 
 If you want to cache reading the file (recommended for production & staging environments)
 
 ```
-GroovyOneliner.compute(file: 'path/to/file', cache: true)
+GroovyOneliner.compute(path: 'path/to/file', cache: true)
+```
+
+You can also set the cache at class level
+```
+GroovyOneliner.always_cache = true
+GroovyOneliner.compute(path: 'path/to/file')
 ```
 
 ## Contributing
