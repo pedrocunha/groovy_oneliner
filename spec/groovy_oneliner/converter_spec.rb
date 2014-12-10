@@ -29,7 +29,7 @@ a = 3;
 return 1;
       TEXT
 
-      expect(subject.compute).to eql("a = 3;return 1;")
+      expect(subject.compute).to eql("a=3;return 1;")
     end
 
     it 'removes all empty lines' do
@@ -39,27 +39,56 @@ a = 4;
 b = 5;
       TEXT
 
-      expect(subject.compute).to eql("a = 4;b = 5;")
+      expect(subject.compute).to eql("a=4;b=5;")
     end
 
-    it 'removes all whitespace after ;' do
-      subject = described_class.new <<-TEXT
+    context 'when removing whitespace' do
+      it 'removes all before and after ;' do
+        subject = described_class.new <<-TEXT
 a = 4; b = 5;
-      TEXT
+        TEXT
 
-      expect(subject.compute).to eql("a = 4;b = 5;")
+        expect(subject.compute).to eql("a=4;b=5;")
+      end
+
+      it 'removes all before and after =' do
+        subject = described_class.new <<-TEXT
+a = 4; b = 5;
+        TEXT
+
+        expect(subject.compute).to eql("a=4;b=5;")
+      end
     end
 
-    it 'removes all /* comment */ blocks' do
-      subject = described_class.new <<-TEXT
+    context 'when handling /* */ block' do
+      it 'removes the block' do
+        subject = described_class.new <<-TEXT
 /*
  * This is a comment and will be ignored
  */
 return 1;
-      TEXT
+        TEXT
 
-      expect(subject.compute).to eql("return 1;")
+        expect(subject.compute).to eql("return 1;")
+      end
+
+      it 'handles multiple blocks' do
+        subject = described_class.new <<-TEXT
+/*
+ * This is a comment and will be ignored
+ */
+a = 1;
+/*
+ * This is a comment and will be ignored
+ */
+b = 1;
+        TEXT
+
+        expect(subject.compute).to eql("a=1;b=1;")
+      end
+
     end
+
 
   end
 end
