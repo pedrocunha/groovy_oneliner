@@ -58,23 +58,23 @@ Or install it yourself as:
 ## Usage
 
 Simplest case
-```
+```ruby
 GroovyOneliner.compute(path: 'path/to/file')
 ```
 
 You can also concat files
-```
+```ruby
 GroovyOneliner.compute(path: ['path/to/file1', 'path/to/file2'])
 ```
 
 If you want to cache reading the file (recommended for production & staging environments)
 
-```
+```ruby
 GroovyOneliner.compute(path: 'path/to/file', cache: true)
 ```
 
 You can also set the cache at class level
-```
+```ruby
 GroovyOneliner.always_cache = true
 GroovyOneliner.compute(path: 'path/to/file')
 ```
