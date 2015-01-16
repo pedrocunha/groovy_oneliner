@@ -57,8 +57,14 @@ Or install it yourself as:
 
 ## Usage
 
+Simplest case
 ```
 GroovyOneliner.compute(path: 'path/to/file')
+```
+
+You can also concat files
+```
+GroovyOneliner.compute(path: ['path/to/file1', 'path/to/file2'])
 ```
 
 If you want to cache reading the file (recommended for production & staging environments)
