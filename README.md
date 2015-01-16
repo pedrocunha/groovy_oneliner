@@ -1,4 +1,5 @@
 # GroovyOneliner
+[![Build Status](https://travis-ci.org/pedrocunha/groovy_oneliner.svg)](https://travis-ci.org/pedrocunha/groovy_oneliner?branch=master)
 
 Convert any groovy script file to a single line script. It is recommended (and also in order for this gem to work) that all lines must be terminated with `;`.
 
