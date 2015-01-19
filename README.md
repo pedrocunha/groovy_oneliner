@@ -4,19 +4,17 @@
 Convert any groovy script file to a single line script. It is recommended (and also in order for this gem to work) that all lines must be terminated with `;`.
 
 ### What would this help with ?
-In order to do scripting in [ElasticSearch](https://github.com/elasticsearch/elasticsearch) you can pick an handful of languages to inject code in your queries however ElasticSearch requires you that any script is written as a single line of code (not to mention the obvious properly formatted with `;`) at query time. 
+In order to do scripting in [ElasticSearch](https://github.com/elasticsearch/elasticsearch) you can pick an handful of languages to inject code in your queries however ElasticSearch requires you that any script is written as a single line of code at query time. 
 
 One of the languages supported is Groovy. Groovy is very similar to Java. 
 
-`GroovyOneliner` was extracted from one of the production apps at [HouseTrip](http://housetrip.com), since it allows to have a separate file for the Groovy script, which benefits: syntax highlighting, multilines, comments etc... and convert that script into one liner that you can use for queries. Nevertheless is important to say this is being used in production.
+`GroovyOneliner` was extracted from one of the **production apps** at [HouseTrip](http://housetrip.com). It allows to have a separate file for the Groovy script, which benifits: syntax highlighting, multilines, comments etc... and convert that script into one liner that you can use for queries.
 
-It is simple as it is, i.e, there are no external dependencies and while it's a very small task, it should allow to avoid repeating the same parsing code over and over.
-
-This gem won't do for you:
+What this gem won't do for you?
 - Check if there is any syntax errors
 - Check if you hate semi-colons
 
-What does it actually do:
+What does it actually do?
 - Removes all `//` & `\* ... */` comments
 - Attempts to remove as much white space as possible such as empty lines, between `;`, etc..
 
